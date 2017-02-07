@@ -13,16 +13,9 @@ namespace DragablzIssue.ViewModels
     {
         private ObservableCollection<TabItemBase> persons;
 
-        private IInterTabClient tabclient;
-        public IInterTabClient TabClient
-        {
-            get { return tabclient; }
-            set { SetProperty(ref tabclient, value); }
-        }
 
         public PersonsViewModel()
-        {
-            TabClient = new MyInterTabClient();
+        {            
             Persons = new ObservableCollection<TabItemBase>
             {
                 {new TabItemBase("Person1", new PersonViewModel("Herbert", 32)) },

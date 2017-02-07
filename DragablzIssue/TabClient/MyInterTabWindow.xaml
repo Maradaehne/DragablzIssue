@@ -9,6 +9,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:tab="clr-namespace:DragablzIssue.TabClient"
     xmlns:views="clr-namespace:DragablzIssue.Views"
+    xmlns:dragablzIssue="clr-namespace:DragablzIssue"
     Title="MyInterTabWindow"
     Width="300"
     Height="300"
@@ -22,7 +23,7 @@
             <dragablz:InterTabController
                 x:Key="InterTabController"
                 x:Shared="False"
-                InterTabClient="{Binding InterTabClient}" />
+                InterTabClient="{x:Static dragablzIssue:TabInfrastructure.TabClient}" />
 
             <Style x:Key="TabablzControlStyle" TargetType="{x:Type dragablz:TabablzControl}">
                 <Setter Property="ShowDefaultAddButton" Value="True" />
@@ -41,11 +42,7 @@
         <!-- branch template lets dragablz create a new tab control after a window is split via docking -->
         <dockablz:Layout.BranchTemplate>
             <DataTemplate>
-                <dragablz:TabablzControl Style="{StaticResource TabablzControlStyle}">
-                    <dragablz:TabablzControl.InterTabController>
-                        <dragablz:InterTabController InterTabClient="{Binding InterTabClient}" />
-                    </dragablz:TabablzControl.InterTabController>
-                </dragablz:TabablzControl>
+                <dragablz:TabablzControl Style="{StaticResource TabablzControlStyle}" />
             </DataTemplate>
         </dockablz:Layout.BranchTemplate>
         <!-- a root, named tab control is needed, so when a tab is torn and a new window is created, the new target tab control can be identified -->
@@ -57,9 +54,6 @@
                 <views:PersonView DataContext="{Binding TabContent}" />
             </DataTemplate>                
             </dragablz:TabablzControl.ContentTemplate>
-            <dragablz:TabablzControl.InterTabController>
-                <dragablz:InterTabController InterTabClient="{Binding InterTabClient}"/>
-            </dragablz:TabablzControl.InterTabController>
         </dragablz:TabablzControl>
     </dockablz:Layout>
 

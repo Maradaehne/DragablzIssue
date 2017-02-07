@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using Dragablz;
+using DragablzIssue.TabClient;
 using DragablzIssue.Views;
 using Prism.Modularity;
 
@@ -34,5 +36,15 @@ namespace DragablzIssue
             // the place to configure modules via configuration files.
             return new ConfigurationModuleCatalog();
         }
+    }
+
+    public static class TabInfrastructure
+    {
+        static TabInfrastructure()
+        {
+            TabClient = new MyInterTabClient();
+        }
+
+        public static IInterTabClient TabClient { get; }
     }
 }
