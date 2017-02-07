@@ -11,6 +11,7 @@
     xmlns:tab="clr-namespace:DragablzIssue.TabClient"
     xmlns:views="clr-namespace:DragablzIssue.Views"
     xmlns:vm="clr-namespace:DragablzIssue.ViewModels"
+    xmlns:dragablzIssue="clr-namespace:DragablzIssue"
     d:DataContext="{d:DesignInstance vm:PersonsViewModel,
                                      IsDesignTimeCreatable=False}"
     d:DesignHeight="500"
@@ -30,7 +31,7 @@
                     </DataTemplate>
                 </dragablz:TabablzControl.ContentTemplate>
                 <dragablz:TabablzControl.InterTabController>
-                    <dragablz:InterTabController InterTabClient="{Binding TabClient}" />
+                    <dragablz:InterTabController InterTabClient="{x:Static dragablzIssue:TabInfrastructure.TabClient}" />
                 </dragablz:TabablzControl.InterTabController>
             </dragablz:TabablzControl>
         </dockablz:Layout>
